@@ -779,7 +779,7 @@ ValidatorContext.prototype.validateMultipleOf = function validateMultipleOf(data
 		return null;
 	}
 	if (typeof data === "number") {
-		var remainder = (data/multipleOf)%1;
+		var remainder = Math.abs((data/multipleOf)%1);
 		if (remainder >= CLOSE_ENOUGH_LOW && remainder < CLOSE_ENOUGH_HIGH) {
 			return this.createError(ErrorCodes.NUMBER_MULTIPLE_OF, {value: data, multipleOf: multipleOf}, '', '', null, data, schema);
 		}
